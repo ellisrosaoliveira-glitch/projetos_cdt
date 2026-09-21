@@ -1,25 +1,19 @@
-
 import tkinter as tk
-
-
-
 from tkinter import ttk, messagebox
 import re
 
-
-
 # ==========================================================
-# 🍦 SORVETERIA GLACÊ
+# 🍦 Sorveteria Glacê 🎀
 # ==========================================================
 
 CORES = {
     "fundo": "#F4F8FC",
     "branco": "#FFFFFF",
-    "azul": "#62B6E8",
-    "azul_claro": "#EAF7FF",
-    "azul_medio": "#3498DB",
+    "azul": "#C75FB4",
+    "azul_claro": "#F795D3",
+    "azul_medio": "#EF91E2",
     "escuro": "#173B57",
-    "texto": "#263238",
+    "texto": "#180D8F",
     "cinza": "#718096",
     "verde": "#35B86B",
     "vermelho": "#E85D5D",
@@ -470,7 +464,7 @@ def iniciar_pedido(sabor, quantidade):
     if quantidade > estoque:
 
         chat_msg(
-            "🍦 Sorveteria da Lis",
+            "🍦 Sorveteria Glacê 🎀",
             f"❌ Temos apenas {estoque} unidade(s) de {sabor}."
         )
 
@@ -492,7 +486,7 @@ def iniciar_pedido(sabor, quantidade):
     total = preco * quantidade
 
     chat_msg(
-        "🍦 Sorveteria da Lis",
+        "🍦 Sorveteria Glacê 🎀",
         f"Seu pedido ficou:\n\n"
         f"🍨 {quantidade}x {sabor}\n"
         f"💰 Total: {dinheiro(total)}\n\n"
@@ -525,7 +519,7 @@ def pagamento_chat(forma):
     if quantidade > estoque:
 
         chat_msg(
-            "🍦 Sorveteria da Lis",
+            "🍦 Sorveteria Glacê 🎀",
             "❌ O estoque mudou e essa quantidade não está mais disponível."
         )
 
@@ -553,12 +547,12 @@ def pagamento_chat(forma):
     )
 
     chat_msg(
-        "🍦 Sorveteria da Lis",
-        f"✨ Pedido confirmado!\n\n"
+        "🍦 Sorveteria Glacê 🎀",
+        f"✨ Pedido confirmed!\n\n"
         f"🍨 {quantidade}x {sabor}\n"
         f"💳 {forma}\n"
         f"💰 Total: {dinheiro(total)}\n\n"
-        "Obrigada pela preferência! 💙🍦"
+        "Obrigada pela preferência! 🎀🍦"
     )
 
     pedido_chat = None
@@ -589,8 +583,8 @@ def processar_chat(texto):
     ):
 
         chat_msg(
-            "🍦 Sorveteria da Lis",
-            "Olá! 💙😊\n\n"
+            "🍦 Sorveteria Glacê 🎀",
+            "Olá! 🎀😊\n\n"
             "Posso ajudar com seu pedido ou suporte."
         )
 
@@ -617,7 +611,7 @@ def processar_chat(texto):
         )
 
         chat_msg(
-            "🍦 Sorveteria da Lis",
+            "🍦 Sorveteria Glacê 🎀",
             "Nosso cardápio é:\n\n" + lista
         )
 
@@ -637,7 +631,7 @@ def processar_chat(texto):
     ):
 
         chat_msg(
-            "🍦 Sorveteria da Lis",
+            "🍦 Sorveteria Glacê 🎀",
             "Claro! 😊\n\n"
             "Digite sua dúvida ou descreva o problema."
         )
@@ -688,8 +682,8 @@ def processar_chat(texto):
     ):
 
         chat_msg(
-            "🍦 Sorveteria da Lis",
-            "Por nada! 💙🍦"
+            "🍦 Sorveteria Glacê 🎀",
+            "Por nada! 🎀🍦"
         )
 
         return
@@ -697,7 +691,7 @@ def processar_chat(texto):
     # ---------------- RESPOSTA PADRÃO ----------------
 
     chat_msg(
-        "🍦 Sorveteria da Lis",
+        "🍦 Sorveteria Glacê 🎀",
         "Não consegui entender. 😅\n\n"
         "Você pode escrever:\n"
         "• Cardápio\n"
@@ -741,10 +735,8 @@ def enviar():
 janela = tk.Tk()
 
 janela.title(
-    "🍦 Sorveteria da Lis"
+    "🍦 Sorveteria Glacê 🎀"
 )
-
-# ⭐ JANELA BEM MENOR
 
 janela.geometry(
     "600x480"
@@ -856,7 +848,7 @@ titulo_frame.pack(
 
 tk.Label(
     titulo_frame,
-    text="Sorveteria da Lis",
+    text="Sorveteria Glacê 🎀",
     bg=CORES["fundo"],
     fg=CORES["escuro"],
     font=("Segoe UI", 15, "bold")
@@ -866,7 +858,7 @@ tk.Label(
 
 tk.Label(
     titulo_frame,
-    text="Gestão da sorveteria 💙",
+    text="Gestão da sorveteria 🎀",
     bg=CORES["fundo"],
     fg=CORES["cinza"],
     font=("Segoe UI", 7)
@@ -1434,7 +1426,7 @@ tk.Label(
 
 tk.Label(
     aba_chat,
-    text="Converse com a Sorveteria da Lis",
+    text="Converse com a Sorveteria Glacê 🎀",
     bg=CORES["branco"],
     fg=CORES["cinza"],
     font=("Segoe UI", 7)
@@ -1513,7 +1505,7 @@ botoes_opcoes = tk.Frame(
 criar_botao(
     botoes_opcoes,
     "🍦 Fazer pedido",
-    opcao_a if "opcao_a" in globals() else lambda: None, # pyright: ignore[reportUndefinedVariable]
+    lambda: opcao_a(),
     CORES["azul_medio"]
 ).pack(
     side="left",
@@ -1526,7 +1518,7 @@ criar_botao(
 criar_botao(
     botoes_opcoes,
     "⚠️ Suporte",
-    opcao_b if "opcao_b" in globals() else lambda: None, # pyright: ignore[reportUndefinedVariable]
+    lambda: opcao_b(),
     CORES["vermelho"]
 ).pack(
     side="left",
@@ -1634,8 +1626,8 @@ def opcao_a():
     )
 
     chat_msg(
-        "🍦 Sorveteria da Lis",
-        "Claro! 💙\n\n"
+        "🍦 Sorveteria Glacê 🎀",
+        "Claro! 🎀\n\n"
         "Digite o sabor e a quantidade.\n\n"
         "Exemplo:\n"
         "👉 Quero 2 Chocolate\n\n"
@@ -1653,7 +1645,7 @@ def opcao_b():
     )
 
     chat_msg(
-        "🍦 Sorveteria da Lis",
+        "🍦 Sorveteria Glacê 🎀",
         "Claro! 😊\n\n"
         "Digite sua dúvida ou problema."
     )
@@ -1664,9 +1656,9 @@ def opcao_b():
 # ==========================================================
 
 chat_msg(
-    "🍦 Sorveteria da Lis",
-    "Olá! Seja bem-vindo(a)! 💙\n\n"
-    "Eu sou o atendimento automático da Lis.\n"
+    "🍦 Sorveteria Glacê 🎀",
+    "Olá! Seja bem-vindo(a)! 🎀\n\n"
+    "Eu sou o atendimento automático da Glacê.\n"
     "Como posso ajudar?"
 )
 
